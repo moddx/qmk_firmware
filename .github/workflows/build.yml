@@ -1,0 +1,40 @@
+name: Build
+
+on:
+  push:
+    branches:
+    - matt
+
+jobs:
+  build:
+    environment: testenv
+    runs-on: ubuntu-latest
+    container: qmkfm/qmk_cli
+    name: Build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Inject Secrets
+        env:
+          HEADER_CONTENT: ${{ secrets.SECRETS_HEADER }}
+        shell: bash
+        run: echo "${HEADER_CONTENT}" > users/moddx/secrets.h
+      - name: Install python dependencies
+        run: pip3 install -r requirements.txt
+      - name: Build firmware (crkbd)
+        run: qmk compile -kb crkbd/rev1 -km moddx -e rp2040=1
+      - name: Build firmware (cnano)
+        run: qmk compile -kb bastardkb/charybdis/3x5/v2/elitec -km moddx -e cnano=1
+      #- name: Build firmware (signum)
+      #  run: qmk compile handwired/signum2:default
+      - name: Archive
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: firmware
+          path: |
+            ./*.uf2
+            ./*.hex
+            ./*.bin
