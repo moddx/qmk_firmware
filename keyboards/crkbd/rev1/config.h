@@ -19,10 +19,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
 
 #define USE_SERIAL
-#define SOFT_SERIAL_PIN D2
+#define SOFT_SERIAL_PIN GP1
 
 /* ws2812 RGB LED */
-#define RGB_DI_PIN      D3
+#define RGB_DI_PIN      GP0
 
 #ifdef RGBLIGHT_ENABLE
 #    define RGBLED_NUM 54 // Number of LEDs
