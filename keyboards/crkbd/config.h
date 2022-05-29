@@ -36,7 +36,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // wiring of each half
 #define MATRIX_COL_PINS \
-    { GP29, GP28, GP27, GP26, GP22, GP20 }
+   { GP29, GP28, GP27, GP26, GP18, GP20 }    // Adafruit KB2040
+    //{ GP29, GP28, GP27, GP26, GP22, GP20 } // Sparkfun RP2040
 
 /* define if matrix has ghost */
 //#define MATRIX_HAS_GHOST
@@ -52,52 +53,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Locking resynchronize hack */
 //#define LOCKING_RESYNC_ENABLE
 
-/*
- * Feature disable options
- *  These options are also useful to firmware size reduction.
- */
-
-/* disable debug print */
-// #define NO_DEBUG
-
-/* disable print */
-// #define NO_PRINT
-
-/* disable action features */
-//#define NO_ACTION_LAYER
-//#define NO_ACTION_TAPPING
-//#define NO_ACTION_ONESHOT
-#define NO_ACTION_MACRO    // Disable old-style macro handling.
-#define NO_ACTION_FUNCTION // Disable old-style function handling.
 
 /* Handedness. */
 #define MASTER_LEFT
 
-// To use the handedness pin, resistors need to be installed on the adapter PCB.
-// If so, uncomment the following code, and undefine MASTER_RIGHT above.
-// #define SPLIT_HAND_PIN GP13
-// #define SPLIT_HAND_PIN_LOW_IS_LEFT  // High -> right, Low -> left.
-
 #define USE_SERIAL
-
-#define U_NP KC_NO // key is not present
-#define U_NA KC_NO // present but not available for use
-#define U_NU KC_NO // available but not used
-#define U_RDO KC_AGIN
-#define U_PST S(KC_INS)
-#define U_CPY C(KC_INS)
-#define U_CUT S(KC_DEL)
-#define U_UND KC_UNDO
-
 /* serial.c configuration (for split keyboard). */
 //#define SOFT_SERIAL_PIN GP1
 
-
 /* Reset. */
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
-#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_LED GP17
-#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 1000U
-
-
-#define LEADER_TIMEOUT 300
-//#define LEADER_PER_KEY_TIMING
+//#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_LED GP17
+//#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 1000U

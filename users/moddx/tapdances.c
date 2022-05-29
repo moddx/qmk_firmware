@@ -1,4 +1,5 @@
 #include "tapdances.h"
+#include "moddx.h"
 
 td_state_t cur_dance (qk_tap_dance_state_t *state) {
   if (state->count == 1) {
@@ -32,45 +33,6 @@ td_state_t cur_dance (qk_tap_dance_state_t *state) {
 }
 
 //
-// S, ß
-//
-
-static td_tap_t stap_state = { .is_press_action = true, .state = TD_NONE };
-
-void stap_each(qk_tap_dance_state_t *state, void *user_data) {
-    if (state->count > 3) {
-        if (state->count == 4) {
-            tap_code(KC_S); tap_code(KC_S); tap_code(KC_S);
-        }
-        tap_code(KC_S);
-    }
-}
-
-void stap_finished(qk_tap_dance_state_t *state, void *user_data) {
-    stap_state.state = cur_dance(state);
-    switch (stap_state.state) {
-        case TD_SINGLE_TAP: register_code(KC_S); break;
-        case TD_TRIPLE_TAP: register_code(DE_SS); break;
-        case TD_TRIPLE_HOLD: register_code(DE_SS); break;
-        case TD_DOUBLE_TAP: tap_code(KC_S); register_code(KC_S); break;
-        case TD_DOUBLE_SINGLE_TAP: tap_code(KC_S); register_code(KC_S);
-        default:  break;
-    }
-}
-
-void stap_reset(qk_tap_dance_state_t *state, void *user_data) {
-    switch (stap_state.state) {
-        case TD_SINGLE_TAP: unregister_code(KC_S); break;
-        case TD_DOUBLE_TAP: unregister_code(KC_S); break;
-        case TD_TRIPLE_TAP: unregister_code(DE_SS); break;
-        case TD_TRIPLE_HOLD: unregister_code(DE_SS); break;
-        case TD_DOUBLE_SINGLE_TAP: unregister_code(KC_S); break;
-        default: break;
-    }
-    stap_state.state = TD_NONE;
-}
-
-//
 // Left Thumb mods
 //
 
@@ -84,15 +46,12 @@ void lmods_finished(qk_tap_dance_state_t *state, void *user_data) {
     switch (lmods_state.state) {
         // GUI
         case TD_SINGLE_TAP:
-        case TD_DOUBLE_SINGLE_TAP:
         case TD_SINGLE_HOLD:
             register_mods(MOD_MASK_GUI); break;
-        // SHIFT
+        // LEADER KEY
+        case TD_DOUBLE_SINGLE_TAP:
         case TD_DOUBLE_TAP:
-            set_oneshot_mods(MOD_LSFT); break;
         case TD_DOUBLE_HOLD:
-            register_mods(MOD_LSFT); break;
-        // CTRL, ALT, SHIFT
         case TD_TRIPLE_TAP:
         case TD_TRIPLE_HOLD:
             qk_leader_start(); break;
@@ -103,11 +62,8 @@ void lmods_finished(qk_tap_dance_state_t *state, void *user_data) {
 void lmods_reset(qk_tap_dance_state_t *state, void *user_data) {
     switch (lmods_state.state) {
         case TD_SINGLE_TAP:
-        case TD_DOUBLE_SINGLE_TAP:
         case TD_SINGLE_HOLD:
             unregister_mods(MOD_MASK_GUI); break;
-        case TD_DOUBLE_HOLD:
-            unregister_mods(MOD_LSFT); break;
         default: break;
     }
     lmods_state.state = TD_NONE;
@@ -175,13 +131,13 @@ void l1_l2_finished(qk_tap_dance_state_t *state, void *user_data) {
         case TD_SINGLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
         case TD_SINGLE_HOLD:
-            layer_on(1); break;
+            layer_on(L1); break;
 
         case TD_DOUBLE_TAP:
         case TD_DOUBLE_HOLD:
         case TD_TRIPLE_TAP:
         case TD_TRIPLE_HOLD:
-            layer_on(2); break;
+            layer_on(L2); break;
         default:  break;
     }
 }
@@ -191,13 +147,13 @@ void l1_l2_reset(qk_tap_dance_state_t *state, void *user_data) {
         case TD_SINGLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
         case TD_SINGLE_HOLD:
-            layer_off(1); break;
+            layer_off(L1); break;
 
         case TD_DOUBLE_TAP:
         case TD_DOUBLE_HOLD:
         case TD_TRIPLE_TAP:
         case TD_TRIPLE_HOLD:
-            layer_off(2); break;
+            layer_off(L2); break;
         default: break;
     }
     l1_l2_state.state = TD_NONE;

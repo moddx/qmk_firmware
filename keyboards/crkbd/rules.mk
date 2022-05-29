@@ -35,10 +35,8 @@ LAYOUTS = split_3x5_3 split_3x6_3
 # Matt
 KEY_OVERRIDE_ENABLE = yes
 TAP_DANCE_ENABLE = yes
-CAPS_WORD_ENABLE = yes
+CAPS_WORD_ENABLE = no
 LEADER_ENABLE = yes
-SRC += features/caps_word.c
-SRC += keymaps/matt/tapdances.c
 
 SERIAL_DRIVER = pio
 WS2812_DRIVER = pio
