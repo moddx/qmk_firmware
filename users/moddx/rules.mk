@@ -41,7 +41,11 @@ LAYOUTS = split_3x5_3
 # moddx
 KEY_OVERRIDE_ENABLE = yes
 TAP_DANCE_ENABLE = yes
-CAPS_WORD_ENABLE = yes
+CAPS_WORD_ENABLE = no
 LEADER_ENABLE = yes
+COMBO_ENABLE = yes
 SRC += users/moddx/moddx.c
 SRC += users/moddx/tapdances.c
+SRC += users/moddx/combos.c
+SRC += users/moddx/os_toggle.c
+SRC += users/moddx/window_swapper.c

@@ -15,7 +15,7 @@ enum td_keycodes {
 
 qk_tap_dance_action_t tap_dance_actions[] = {
     // Tap once for X, twice for TAB
-    [TD_X_TAB] = ACTION_TAP_DANCE_DOUBLE(KC_X, KC_TAB),
+    //[TD_X_TAB] = ACTION_TAP_DANCE_DOUBLE(KC_X, KC_TAB),
     // triple tap s -> ß
     //[TD_S_SS] = ACTION_TAP_DANCE_FN_ADVANCED(stap_each, stap_finished, stap_reset),
     [TD_L_MODS] = ACTION_TAP_DANCE_FN_ADVANCED(lmods_each, lmods_finished, lmods_reset),
@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     // Default, L0
 	[DEFAULT] = LAYOUT_split_3x5_3(
-		TD(TD_X_TAB), KC_V,         KC_L,         KC_C,         KC_W,           KC_K,   KC_H,   KC_G,    KC_F,    KC_Q,
+		KC_X,         KC_V,         KC_L,         KC_C,         KC_W,           KC_K,   KC_H,   KC_G,    KC_F,    KC_Q,
 		LALT_T(KC_U), LT(L4, KC_I), LT(L5, KC_A), LT(L3, KC_E), KC_O,           KC_S,   KC_N,   KC_R,    KC_T,    KC_D,
 		LSFT_T(DE_Y), DE_Y,         KC_LEAD,      KC_P,         DE_Z,           KC_B,   KC_M,   KC_COMM, KC_DOT,  RSFT_T(KC_J),
 		                            TD(TD_L_MODS), KC_LCTL, TD(TD_L1_L2),       KC_SPC, MO(L2), U_NP
@@ -93,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	// L2
 	[L2] = LAYOUT_split_3x5_3(
 		EMAIL,          DE_BSLS,     DE_EQL,  DE_AMPR, DE_TILD,       DM_PLY1, LSFT(KC_F3), DE_ASTR, KC_F3,   DE_PLUS,
-		LCTL_T(DE_AT),  DE_LABK,     DE_RABK, DE_MINS, DE_PIPE,       KC_HOME, KC_PGDN,     KC_PGUP, KC_END,  KC_TRNS,
+		LCTL_T(DE_AT),  DE_LABK,     DE_RABK, DE_MINS, DE_PIPE,       MC_SWLE, KC_PGDN,     KC_PGUP, MC_SWRI, KC_TRNS,
 		LSFT_T(KC_APP), LALT(KC_F4), KC_NO,   KC_NO,   KC_NO,         DE_SS,   DE_UDIA,     DE_ODIA, DE_ADIA, KC_RSFT,
 		                             KC_TRNS, KC_CAPS, KC_TRNS,       KC_TRNS, KC_TRNS,     U_NP
     ),

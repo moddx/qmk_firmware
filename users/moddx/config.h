@@ -3,6 +3,7 @@
 #define IGNORE_MOD_TAP_INTERRUPT
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 #define PERMISSIVE_HOLD_PER_KEY
+#define COMBO_MUST_HOLD_MODS
 
 /* disable action features */
 //#define NO_ACTION_LAYER

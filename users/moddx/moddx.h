@@ -1,6 +1,7 @@
 #pragma once
 
 #include QMK_KEYBOARD_H
+#include "keycodes.h"
 
 #define DEFAULT 0
 #define QWERTZ 1
@@ -10,9 +11,7 @@
 #define L4 5  // NUM SPECIAL
 #define L5 6  // F1-12..
 
-enum custom_keycodes {
-    EMAIL = SAFE_RANGE
-};
+
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record);
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record);

@@ -41,28 +41,57 @@ static td_tap_t lmods_state = { .is_press_action = true, .state = TD_NONE };
 void lmods_each(qk_tap_dance_state_t *state, void *user_data) {
 }
 
+// void lmods_finished(qk_tap_dance_state_t *state, void *user_data) {
+//     lmods_state.state = cur_dance(state);
+//     switch (lmods_state.state) {
+//         // GUI
+//         case TD_SINGLE_TAP:
+//         case TD_SINGLE_HOLD:
+//             register_mods(MOD_MASK_GUI); break;
+//         // LEADER KEY
+//         case TD_DOUBLE_SINGLE_TAP:
+//         case TD_DOUBLE_TAP:
+//         case TD_DOUBLE_HOLD:
+//         case TD_TRIPLE_TAP:
+//         case TD_TRIPLE_HOLD:
+//             qk_leader_start(); break;
+//         default:  break;
+//     }
+// }
+
+// void lmods_reset(qk_tap_dance_state_t *state, void *user_data) {
+//     switch (lmods_state.state) {
+//         case TD_SINGLE_TAP:
+//         case TD_SINGLE_HOLD:
+//             unregister_mods(MOD_MASK_GUI); break;
+//         default: break;
+//     }
+//     lmods_state.state = TD_NONE;
+// }
+
 void lmods_finished(qk_tap_dance_state_t *state, void *user_data) {
     lmods_state.state = cur_dance(state);
     switch (lmods_state.state) {
-        // GUI
         case TD_SINGLE_TAP:
+            set_oneshot_mods(MOD_MASK_SHIFT); break;
         case TD_SINGLE_HOLD:
-            register_mods(MOD_MASK_GUI); break;
-        // LEADER KEY
+            register_mods(MOD_MASK_SHIFT); break;
         case TD_DOUBLE_SINGLE_TAP:
+            tap_code(KC_LSFT); tap_code(KC_LSFT);
+            break;
         case TD_DOUBLE_TAP:
         case TD_DOUBLE_HOLD:
-        case TD_TRIPLE_TAP:
-        case TD_TRIPLE_HOLD:
-            qk_leader_start(); break;
+            register_mods(MOD_MASK_GUI); break;
         default:  break;
     }
 }
 
 void lmods_reset(qk_tap_dance_state_t *state, void *user_data) {
     switch (lmods_state.state) {
-        case TD_SINGLE_TAP:
         case TD_SINGLE_HOLD:
+            unregister_mods(MOD_MASK_SHIFT); break;
+        case TD_DOUBLE_TAP:
+        case TD_DOUBLE_HOLD:
             unregister_mods(MOD_MASK_GUI); break;
         default: break;
     }
