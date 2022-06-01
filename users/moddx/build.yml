@@ -1,0 +1,42 @@
+name: Build
+
+on:
+  push:
+    branches:
+    - matt
+
+jobs:
+  build:
+    environment: testenv
+    runs-on: ubuntu-latest
+    container:
+      image: qmkfm/base_container
+    name: Build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Inject Secrets
+        env:
+          EMAIL: ${{ secrets.EMAIL }}
+        shell: bash
+        run: true # sed -i "s/\/\*SECRET_EMAIL\*\/ &kp E/${EMAIL}/" users/moddx/secrets.h
+      - name: Install dependencies
+        run: |
+          apt-get update -qy
+          apt-get install -y build-essential avr-libc binutils-arm-none-eabi binutils-avr dfu-programmer dfu-util gcc gcc-arm-none-eabi git libnewlib-arm-none-eabi gcc-avr python3 unzip wget zip
+          avr-gcc --version
+          uname -a
+      - name: Install python dependencies
+        run: pip3 install -r requirements.txt
+      - name: Build firmware
+        run: make crkbd/rev1:moddx bastardkb/charybdis/3x5/v2/elitec:moddx handwired/signum2:default
+      - name: Archive (Atreus50)
+        uses: actions/upload-artifact@v2
+        with:
+          name: firmware
+          paths: |
+            ./*.uf2
+            ./*.hex
+            ./*.bin
