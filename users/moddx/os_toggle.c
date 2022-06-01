@@ -1,7 +1,7 @@
 #include "os_toggle.h"
 #include "keycodes.h"
 
-os_t os = {.type = WINDOWS};
+os_t os = {.type = LINUX};
 
 process_record_result_t process_os_toggle(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {

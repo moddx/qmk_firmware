@@ -6,7 +6,7 @@ extern os_t os;
 static bool swapping = false;
 
 process_record_result_t process_window_swapper(uint16_t keycode, keyrecord_t *record) {
-    bool isWindowsOrLinux = os.type == WINDOWS || os.type == LINUX;
+    bool isWindowsOrLinux = os.type != MACOS;
 
     if (swapping && keycode != MC_SWLE && keycode != MC_SWRI) {
         swapping = false;
