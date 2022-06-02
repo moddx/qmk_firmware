@@ -34,3 +34,14 @@
 
 // only allow up to 8 layers to save firmware size (on introduction: 832 bytes)
 #define LAYER_STATE_8BIT
+
+// sumandrew — heute um 15:47 Uhr
+// adding this code to config.h after applying the change in https://github.com/qmk/qmk_firmware/pull/17272 fixed the reboot issue on KB2040
+// #define SPLIT_USB_DETECT
+// #define SPLIT_USB_TIMEOUT 10000
+// #define SPLIT_USB_TIMEOUT_POLL 100
+
+#define CHARYBDIS_DRAGSCROLL_REVERSE_Y
+#define CHARYBDIS_MINIMUM_SNIPING_DPI 300
+#define CHARYBDIS_DRAGSCROLL_DPI 150
+

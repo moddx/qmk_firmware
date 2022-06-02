@@ -8,13 +8,15 @@ ifdef KEYBOARD_crkbd
 	WS2812_DRIVER = pio
 	POINTING_DEVICE_ENABLE = no
 	DEFAULT_FOLDER = crkbd/rev1
+	NKRO_ENABLE = yes
 endif
 
 # if firmware size over limit, try this option, or
-ifdef KEYBOARD_bastardkb_charybdis_3x5
-	# EXTRAFLAGS += -flto
+ifdef KEYBOARD_bastardkb_charybdis_3x5_elitec
+	EXTRAFLAGS += -flto
 	LTO_ENABLE = yes
-	POINTING_DEVICE_ENABLE = no
+	POINTING_DEVICE_ENABLE = yes
+	NKRO_ENABLE = no
 endif
 
 # Build Options
@@ -26,7 +28,7 @@ COMMAND_ENABLE = no         # Commands for debug and configuration
 # Do not enable SLEEP_LED_ENABLE. it uses the same timer as BACKLIGHT_ENABLE
 SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
 # if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
-NKRO_ENABLE = yes           # USB Nkey Rollover
+
 
 AUDIO_ENABLE = no           # Audio output
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
@@ -43,9 +45,10 @@ KEY_OVERRIDE_ENABLE = yes
 TAP_DANCE_ENABLE = yes
 CAPS_WORD_ENABLE = no
 LEADER_ENABLE = yes
-COMBO_ENABLE = yes
+COMBO_ENABLE = no
 SRC += users/moddx/moddx.c
 SRC += users/moddx/tapdances.c
-SRC += users/moddx/combos.c
-SRC += users/moddx/os_toggle.c
-SRC += users/moddx/window_swapper.c
+#SRC += users/moddx/pointing/pointing.c
+#SRC += users/moddx/combos.c
+#SRC += users/moddx/os_toggle.c
+#SRC += users/moddx/window_swapper.c

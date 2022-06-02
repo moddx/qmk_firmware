@@ -28,8 +28,8 @@ RGB_MATRIX_ENABLE = yes     # Enable keyboard RGB matrix functionality
 SPLIT_KEYBOARD = yes
 LAYOUTS = split_3x5_3 # Support community layout, in particular Manna-Harbour's Miryoku layout
 
-POINTING_DEVICE_ENABLE = no # Enable trackball
-POINTING_DEVICE_DRIVER = pmw3360
+POINTING_DEVICE_ENABLE = yes # Enable trackball
+POINTING_DEVICE_DRIVER = pmw3389
 # https://qmk.fm/changes/2018-11-16-use-a-single-endpoint-for-hid-reports
 MOUSE_SHARED_EP = no # Unify multiple HID interfaces into a single Endpoint
 

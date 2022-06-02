@@ -71,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[DEFAULT] = LAYOUT_split_3x5_3(
 		KC_X,         KC_V,         KC_L,         KC_C,         KC_W,           KC_K,   KC_H,   KC_G,    KC_F,    KC_Q,
 		LALT_T(KC_U), LT(L4, KC_I), LT(L5, KC_A), LT(L3, KC_E), KC_O,           KC_S,   KC_N,   KC_R,    KC_T,    KC_D,
-		LSFT_T(DE_Y), DE_Y,         KC_LEAD,      KC_P,         DE_Z,           KC_B,   KC_M,   KC_COMM, KC_DOT,  RSFT_T(KC_J),
+		LSFT_T(DE_Y), TG(_MOUSE),   KC_LEAD,      KC_P,         DE_Z,           KC_B,   KC_M,   KC_COMM, KC_DOT,  RSFT_T(KC_J),
 		                            TD(TD_L_MODS), KC_LCTL, TD(TD_L1_L2),       KC_SPC, MO(L2), U_NP
     ),
 
@@ -120,6 +120,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		OSM(MOD_LALT), OSM(MOD_LSFT), KC_TRNS,       KC_TRNS,       KC_TRNS,          KC_TRNS, KC_F4,   KC_F5,   KC_F6,   KC_F11,
 		OSM(MOD_LSFT), KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,          KC_TRNS, KC_F1,   KC_F2,   KC_F3,   KC_F12,
 		                              OSM(MOD_LGUI), OSM(MOD_LCTL), KC_TRNS,          KC_TRNS, KC_TRNS, U_NP
+    ),
+
+    // L5 F-Keys
+	[_MOUSE] = LAYOUT_split_3x5_3(
+		KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,          KC_NO, KC_NO,   DPI_RMOD,  DPI_MOD, KC_NO,
+		OSM(MOD_LALT), OSM(MOD_LSFT), KC_BTN1,       KC_BTN2,       KC_TRNS,          KC_NO, KC_BTN1, KC_BTN3,   KC_BTN2, KC_NO,
+		OSM(MOD_LSFT), TG(_MOUSE),    SNIPING,       DRGSCRL,       KC_TRNS,          KC_NO, DRGSCRL, KC_NO,     KC_NO,   KC_NO,
+		                              OSM(MOD_LGUI), OSM(MOD_LCTL), MO(L1),           KC_NO, KC_NO, U_NP
     )
 
 };
