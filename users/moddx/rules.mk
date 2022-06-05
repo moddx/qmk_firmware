@@ -21,7 +21,7 @@ endif
 
 # Build Options
 BOOTMAGIC_ENABLE = no       # Enable Bootmagic Lite
-MOUSEKEY_ENABLE = yes       # Mouse keys
+MOUSEKEY_ENABLE = no        # Mouse keys
 EXTRAKEY_ENABLE = yes       # Audio control and System control
 CONSOLE_ENABLE = no         # Console for debug
 COMMAND_ENABLE = no         # Commands for debug and configuration
@@ -45,10 +45,10 @@ KEY_OVERRIDE_ENABLE = yes
 TAP_DANCE_ENABLE = yes
 CAPS_WORD_ENABLE = no
 LEADER_ENABLE = yes
-COMBO_ENABLE = no
+COMBO_ENABLE = yes
 SRC += users/moddx/moddx.c
 SRC += users/moddx/tapdances.c
-#SRC += users/moddx/pointing/pointing.c
-#SRC += users/moddx/combos.c
-#SRC += users/moddx/os_toggle.c
-#SRC += users/moddx/window_swapper.c
+SRC += users/moddx/pointing/pointing.c
+SRC += users/moddx/combos.c
+SRC += users/moddx/os_toggle.c
+SRC += users/moddx/window_swapper.c

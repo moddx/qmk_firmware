@@ -24,21 +24,9 @@ typedef struct {
 
 td_state_t cur_dance (qk_tap_dance_state_t *state);
 
-void stap_each(qk_tap_dance_state_t *state, void *user_data);
-void stap_finished (qk_tap_dance_state_t *state, void *user_data);
-void stap_reset (qk_tap_dance_state_t *state, void *user_data);
-
-void ctrl_tab_each(qk_tap_dance_state_t *state, void *user_data);
-void ctrl_tab_finished (qk_tap_dance_state_t *state, void *user_data);
-void ctrl_tab_reset (qk_tap_dance_state_t *state, void *user_data);
-
 void lmods_each(qk_tap_dance_state_t *state, void *user_data);
 void lmods_finished (qk_tap_dance_state_t *state, void *user_data);
 void lmods_reset (qk_tap_dance_state_t *state, void *user_data);
-
-void l_csa_mods_each(qk_tap_dance_state_t *state, void *user_data);
-void l_csa_mods_finished (qk_tap_dance_state_t *state, void *user_data);
-void l_csa_mods_reset (qk_tap_dance_state_t *state, void *user_data);
 
 void l1_l2_each(qk_tap_dance_state_t *state, void *user_data);
 void l1_l2_finished (qk_tap_dance_state_t *state, void *user_data);

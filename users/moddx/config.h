@@ -7,7 +7,7 @@
 #define PERMISSIVE_HOLD_PER_KEY
 
 #define COMBO_MUST_HOLD_MODS
-#define COMBO_ONLY_FROM_LAYER L1
+#define COMBO_ONLY_FROM_LAYER DEFAULT
 
 /* disable action features */
 //#define NO_ACTION_LAYER
@@ -23,11 +23,11 @@
 // #define NO_PRINT
 
 #define U_NP KC_NO // key is not present
-#define U_NA KC_NO // present but not available for use
-#define U_NU KC_NO // available but not used
-#define U_PST S(KC_INS)
-#define U_CPY C(KC_INS)
-#define U_CUT S(KC_DEL)
+// #define U_NA KC_NO // present but not available for use
+// #define U_NU KC_NO // available but not used
+// #define U_PST S(KC_INS)
+// #define U_CPY C(KC_INS)
+// #define U_CUT S(KC_DEL)
 
 #define LEADER_TIMEOUT 300
 //#define LEADER_PER_KEY_TIMING

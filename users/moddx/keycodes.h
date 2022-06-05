@@ -7,4 +7,6 @@ enum custom_keycodes {
     MC_SWLE,
     MC_SWRI,
     TG_MAC, TG_WIN, TG_LIN,
+    KC_ACCEL,
+    KEYCODES_RANGE
 };
