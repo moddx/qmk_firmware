@@ -29,8 +29,12 @@ jobs:
           uname -a
       - name: Install python dependencies
         run: pip3 install -r requirements.txt
-      - name: Build firmware
-        run: make crkbd/rev1:moddx bastardkb/charybdis/3x5/v2/elitec:moddx handwired/signum2:default
+      - name: Build firmware (crkbd)
+        run: make crkbd/rev1:moddx -e rp2040=1
+      - name: Build firmware (cnano)
+        run: make bastardkb/charybdis/3x5/v2/elitec:moddx -e cnano=1
+      #- name: Build firmware (signum)
+      #  run: make handwired/signum2:default
       - name: Archive (Atreus50)
         uses: actions/upload-artifact@v2
         with:
