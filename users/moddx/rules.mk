@@ -1,9 +1,9 @@
 
-ifdef KEYBOARD_crkbd_rev1
-	MCU = RP2040
-	BOOTLOADER = rp2040
-	ALLOW_WARNINGS = yes
-	PICO_INTRINSICS_ENABLED = no # ATM Unsupported by ChibiOS
+ifdef rp2040
+	#MCU = RP2040
+	#BOOTLOADER = rp2040
+	#ALLOW_WARNINGS = yes
+	#PICO_INTRINSICS_ENABLED = no # ATM Unsupported by ChibiOS
 	SERIAL_DRIVER = vendor
 	WS2812_DRIVER = vendor
 	POINTING_DEVICE_ENABLE = no
@@ -11,8 +11,7 @@ ifdef KEYBOARD_crkbd_rev1
 	NKRO_ENABLE = yes
 endif
 
-# if firmware size over limit, try this option, or
-ifdef KEYBOARD_bastardkb_charybdis_3x5_elitec
+ifdef cnano
 	EXTRAFLAGS += -flto
 	LTO_ENABLE = yes
 	POINTING_DEVICE_ENABLE = yes

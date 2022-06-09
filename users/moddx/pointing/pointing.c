@@ -7,7 +7,7 @@ static uint16_t mouse_timer           = 0;
 static uint16_t mouse_debounce_timer  = 0;
 static uint8_t  mouse_keycode_tracker = 0;
 bool            tap_toggling = false;
-//bool            enable_acceleration = false;
+bool            enable_acceleration = false;
 
 #ifdef TAPPING_TERM_PER_KEY
 #    define TAP_CHECK get_tapping_term(KC_BTN1, NULL)
@@ -23,19 +23,17 @@ __attribute__((weak)) report_mouse_t pointing_device_task_keymap(report_mouse_t 
 }
 
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
-    // int8_t x = mouse_report.x, y = mouse_report.y;
-    // mouse_report.x = 0;
-    // mouse_report.y = 0;
+    int8_t x = mouse_report.x, y = mouse_report.y;
 
-    if (mouse_report.x != 0 && mouse_report.y != 0) {
+    if (x != 0 || y != 0) {
         mouse_timer = timer_read();
         if (timer_elapsed(mouse_debounce_timer) > TAP_CHECK) {
-            // if (enable_acceleration) {
-            //     x = (x > 0 ? x * x / 16 + x : -x * x / 16 + x);
-            //     y = (y > 0 ? y * y / 16 + y : -y * y / 16 + y);
-            // }
-            // mouse_report.x = x;
-            // mouse_report.y = y;
+            if (enable_acceleration) {
+                x = (x > 0 ? x * x / 16 + x : -x * x / 16 + x);
+                y = (y > 0 ? y * y / 16 + y : -y * y / 16 + y);
+            }
+            mouse_report.x = x;
+            mouse_report.y = y;
             if (!layer_state_is(_MOUSE)) {
                 layer_on(_MOUSE);
             }
@@ -87,11 +85,11 @@ bool process_record_pointing(uint16_t keycode, keyrecord_t* record) {
             record->event.pressed ? mouse_keycode_tracker++ : mouse_keycode_tracker--;
             mouse_timer = timer_read();
             break;
-        // case KC_ACCEL:
-        //     enable_acceleration = record->event.pressed;
-        //     record->event.pressed ? mouse_keycode_tracker++ : mouse_keycode_tracker--;
-        //     mouse_timer = timer_read();
-        //     break;
+        case KC_ACCEL:
+            enable_acceleration = record->event.pressed;
+            record->event.pressed ? mouse_keycode_tracker++ : mouse_keycode_tracker--;
+            mouse_timer = timer_read();
+            break;
         case QK_ONE_SHOT_MOD ... QK_ONE_SHOT_MOD_MAX:
             break;
         case QK_MOD_TAP ... QK_MOD_TAP_MAX:

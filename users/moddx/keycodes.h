@@ -3,7 +3,7 @@
 #include QMK_KEYBOARD_H
 
 enum custom_keycodes {
-    #ifdef CHARYBDIS_SAFE_RANGE
+    #if defined(KEYBOARD_bastardkb_charybdis_3x5_v2_elitec)
     START_RANGE = CHARYBDIS_SAFE_RANGE,
     #else
     START_RANGE = SAFE_RANGE,

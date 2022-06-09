@@ -1,11 +1,16 @@
 #include "moddx.h"
-#include "secrets.h"
 #include "tapdances.h"
 #include "pointing/pointing.h"
 #include "window_swapper.h"
 
 #include "keymap_german.h"
 #include "sendstring_german.h"
+
+#if (__has_include("secrets.h") && !defined(NO_SECRETS))
+#include "secrets.h"
+#else
+#include "secrets_placeholder.h"
+#endif
 
 // Tap Dance definitions
 enum td_keycodes {
@@ -119,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     // L5 F-Keys
 	[_MOUSE] = LAYOUT_split_3x5_3(
-		KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,          KC_NO, KC_NO,   DPI_RMOD,  DPI_MOD, KC_NO,
+		KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_ACCEL,         KC_NO, KC_NO,   DPI_RMOD,  DPI_MOD, KC_NO,
 		OSM(MOD_LALT), OSM(MOD_LSFT), KC_BTN1,       KC_BTN2,       KC_TRNS,          KC_NO, KC_BTN1, KC_BTN3,   KC_BTN2, KC_NO,
 		OSM(MOD_LSFT), KC_TRNS,       SNIPING,       DRGSCRL,       KC_TRNS,          KC_NO, DRGSCRL, KC_NO,     KC_NO,   KC_NO,
                                         TD(TD_L_MODS), OSM(MOD_LCTL), MO(_L1),           KC_NO, KC_NO, U_NP
