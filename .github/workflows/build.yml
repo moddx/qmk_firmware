@@ -30,17 +30,17 @@ jobs:
       - name: Install python dependencies
         run: pip3 install -r requirements.txt
       - name: Build firmware (crkbd)
-        run: make crkbd/rev1:moddx -e rp2040=1
+        run: qmk compile crkbd/rev1:moddx -e rp2040=1
       - name: Build firmware (cnano)
-        run: make bastardkb/charybdis/3x5/v2/elitec:moddx -e cnano=1 -c
+        run: qmk compile bastardkb/charybdis/3x5/v2/elitec:moddx -e cnano=1 -c
       #- name: Build firmware (signum)
-      #  run: make handwired/signum2:default
+      #  run: qmk compile handwired/signum2:default
       - name: Archive
         if: ${{ always() }}
         uses: actions/upload-artifact@v2
         with:
           name: firmware
-          paths: |
+          path: |
             ./*.uf2
             ./*.hex
             ./*.bin
