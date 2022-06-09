@@ -86,13 +86,13 @@ void l1_l2_finished(qk_tap_dance_state_t *state, void *user_data) {
         case TD_SINGLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
         case TD_SINGLE_HOLD:
-            layer_on(L1); break;
+            layer_on(_L1); break;
 
         case TD_DOUBLE_TAP:
         case TD_DOUBLE_HOLD:
         case TD_TRIPLE_TAP:
         case TD_TRIPLE_HOLD:
-            layer_on(L2); break;
+            layer_on(_L2); break;
         default:  break;
     }
 }
@@ -102,13 +102,13 @@ void l1_l2_reset(qk_tap_dance_state_t *state, void *user_data) {
         case TD_SINGLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
         case TD_SINGLE_HOLD:
-            layer_off(L1); break;
+            layer_off(_L1); break;
 
         case TD_DOUBLE_TAP:
         case TD_DOUBLE_HOLD:
         case TD_TRIPLE_TAP:
         case TD_TRIPLE_HOLD:
-            layer_off(L2); break;
+            layer_off(_L2); break;
         default: break;
     }
     l1_l2_state.state = TD_NONE;

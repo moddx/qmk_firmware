@@ -22,24 +22,9 @@ RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output
 RGB_MATRIX_ENABLE = no
 
-# if firmware size over limit, try this option
-# LTO_ENABLE = yes
-
 DEFAULT_FOLDER = crkbd/rev1
 
 RGBLIGHT_SUPPORTED = no
 RGB_MATRIX_SUPPORTED = no
 
 LAYOUTS = split_3x5_3 split_3x6_3
-
-# Matt
-KEY_OVERRIDE_ENABLE = yes
-TAP_DANCE_ENABLE = yes
-CAPS_WORD_ENABLE = no
-LEADER_ENABLE = yes
-
-SERIAL_DRIVER = pio
-WS2812_DRIVER = pio
-
-
-# EXTRAFLAGS += -flto

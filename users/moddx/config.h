@@ -7,7 +7,7 @@
 #define PERMISSIVE_HOLD_PER_KEY
 
 #define COMBO_MUST_HOLD_MODS
-#define COMBO_ONLY_FROM_LAYER DEFAULT
+#define COMBO_ONLY_FROM_LAYER _DEFAULT
 
 /* disable action features */
 //#define NO_ACTION_LAYER
