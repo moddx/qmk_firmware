@@ -9,8 +9,7 @@ jobs:
   build:
     environment: testenv
     runs-on: ubuntu-latest
-    container:
-      image: qmkfm/base_container
+    container: qmkfm/qmk_cli
     name: Build
     steps:
       - name: Checkout
