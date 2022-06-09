@@ -30,9 +30,9 @@ jobs:
       - name: Install python dependencies
         run: pip3 install -r requirements.txt
       - name: Build firmware (crkbd)
-        run: qmk compile crkbd/rev1:moddx -e rp2040=1
+        run: qmk compile -kb crkbd/rev1 -km moddx -e rp2040=1
       - name: Build firmware (cnano)
-        run: qmk compile bastardkb/charybdis/3x5/v2/elitec:moddx -e cnano=1 -c
+        run: qmk compile -kb bastardkb/charybdis/3x5/v2/elitec -km moddx -e cnano=1 -c
       #- name: Build firmware (signum)
       #  run: qmk compile handwired/signum2:default
       - name: Archive
