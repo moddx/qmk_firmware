@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     environment: testenv
- q   runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     container: qmkfm/qmk_cli
     name: Build
     steps:
