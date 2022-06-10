@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     environment: testenv
-    runs-on: ubuntu-latest
+ q   runs-on: ubuntu-latest
     container: qmkfm/qmk_cli
     name: Build
     steps:
@@ -18,9 +18,9 @@ jobs:
           submodules: recursive
       - name: Inject Secrets
         env:
-          EMAIL: ${{ secrets.EMAIL }}
+          HEADER_CONTENT: ${{ secrets.SECRETS_HEADER }}
         shell: bash
-        run: true # sed -i "s/\/\*SECRET_EMAIL\*\/ &kp E/${EMAIL}/" users/moddx/secrets.h
+        run: echo "${HEADER_CONTENT}" > users/moddx/secrets.h
       - name: Install python dependencies
         run: pip3 install -r requirements.txt
       - name: Build firmware (crkbd)
