@@ -21,18 +21,12 @@ jobs:
           EMAIL: ${{ secrets.EMAIL }}
         shell: bash
         run: true # sed -i "s/\/\*SECRET_EMAIL\*\/ &kp E/${EMAIL}/" users/moddx/secrets.h
-      - name: Install dependencies
-        run: |
-          apt-get update -qy
-          apt-get install -y build-essential avr-libc binutils-arm-none-eabi binutils-avr dfu-programmer dfu-util gcc gcc-arm-none-eabi git libnewlib-arm-none-eabi gcc-avr python3 unzip wget zip
-          avr-gcc --version
-          uname -a
       - name: Install python dependencies
         run: pip3 install -r requirements.txt
       - name: Build firmware (crkbd)
         run: qmk compile -kb crkbd/rev1 -km moddx -e rp2040=1
       - name: Build firmware (cnano)
-        run: qmk compile -kb bastardkb/charybdis/3x5/v2/elitec -km moddx -e cnano=1 -c
+        run: qmk compile -kb bastardkb/charybdis/3x5/v2/elitec -km moddx -e cnano=1
       #- name: Build firmware (signum)
       #  run: qmk compile handwired/signum2:default
       - name: Archive
