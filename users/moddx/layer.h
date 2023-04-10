@@ -1,7 +1,7 @@
 #pragma once
 
 #define _DEFAULT 0
-#define _QWERTZ 1
+#define _HL 1
 #define _MOUSE 2
 #define _L2 3
 #define _L3 4  // NUM

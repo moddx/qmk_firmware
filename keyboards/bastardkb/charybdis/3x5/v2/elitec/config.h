@@ -17,6 +17,12 @@
 
 #pragma once
 
+/* Key matrix configuration. */
+#define MATRIX_ROW_PINS \
+    { F4, F7, C6, D4 }
+#define MATRIX_COL_PINS \
+    { E6, D7, B6, F5, F6 }
+
 /* Handedness. */
 #define MASTER_RIGHT
 
