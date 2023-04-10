@@ -1,5 +1,4 @@
 #include "moddx.h"
-#include "tapdances.h"
 #include "pointing/pointing.h"
 #include "window_swapper.h"
 
@@ -12,16 +11,6 @@
 #include "secrets_placeholder.h"
 #endif
 
-// Tap Dance definitions
-enum td_keycodes {
-    TD_L_MODS,
-    TD_L1_L2,
-};
-
-qk_tap_dance_action_t tap_dance_actions[] = {
-    [TD_L_MODS] = ACTION_TAP_DANCE_FN_ADVANCED(lmods_each, lmods_finished, lmods_reset),
-    [TD_L1_L2] = ACTION_TAP_DANCE_FN_ADVANCED(l1_l2_each, l1_l2_finished, l1_l2_reset),
-};
 
 //
 // OVERRIDES
@@ -72,20 +61,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_X,         KC_V,         KC_L,         KC_C,         KC_W,           KC_K,   KC_H,   KC_G,    KC_F,    KC_Q,
 		LALT_T(KC_U), LT(_L4, KC_I), LT(_L5, KC_A), LT(_L3, KC_E), KC_O,           KC_S,   KC_N,   KC_R,    KC_T,    KC_D,
 		LSFT_T(DE_Y), MO(_MOUSE),   KC_LEAD,      KC_P,         DE_Z,           KC_B,   KC_M,   KC_COMM, KC_DOT,  RSFT_T(KC_J),
-		                            TD(TD_L_MODS), KC_LCTL, TD(TD_L1_L2),       KC_SPC, MO(_L2), U_NP
+		                            KC_LSFT, KC_LCTL, MO(_L1),       KC_SPC, MO(_L2), U_NP
     ),
 
-    [_QWERTZ] = LAYOUT_split_3x5_3(
-		KC_Q,         KC_W,         KC_E,         KC_R,         KC_T,           KC_Z,   KC_U,   KC_I,    KC_O,    KC_P,
-		LALT_T(KC_A), LT(_L4, KC_S), LT(_L5, KC_D), LT(_L3, KC_F), KC_G,           KC_H,   KC_J,   KC_K,    KC_L,    KC_LEAD,
-		LSFT_T(DE_Y), DE_X,         KC_C,         KC_V,         DE_B,           KC_N,   KC_M,   KC_COMM, KC_DOT,  RSFT_T(DE_MINS),
-		                            TD(TD_L_MODS), KC_LCTL, TD(TD_L1_L2),       KC_SPC, MO(_L2), U_NP
+    [_HL] = LAYOUT_split_3x5_3(
+		KC_TAB,  KC_Q, KC_W, KC_E, KC_R,           KC_Z,   KC_U,   KC_I,    KC_O,    KC_P,
+		KC_LSFT, KC_A, KC_S, KC_D, KC_F,           KC_H,   KC_J,   KC_K,    KC_L,    KC_LEAD,
+		KC_LCTL, DE_Y, DE_5, KC_4, KC_3,           KC_N,   KC_M,   KC_COMM, KC_DOT,  RSFT_T(DE_MINS),
+		               KC_2, KC_1, KC_SPC,         KC_ESC, TG(_HL), U_NP
     ),
 
     // _L1
 	[_L1] = LAYOUT_split_3x5_3(
         KC_TAB,  KC_ESC,     KC_ENT,     LCTL(DE_Z), KC_INS,        DM_REC1, DE_HASH,       DE_LCBR, DE_RCBR, KC_MPLY,
-		KC_LCTL, KC_NO,      LCTL(KC_S), KC_HOME,    KC_END,        KC_LEFT, KC_DOWN,       KC_UP,   KC_RGHT, DE_LPRN,
+		KC_LCTL, KC_SPC,     LCTL(KC_S), KC_HOME,    KC_END,        KC_LEFT, KC_DOWN,       KC_UP,   KC_RGHT, DE_LPRN,
 		KC_LSFT, LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), KC_NO,         KC_DEL,  KC_BSPC,       DE_LBRC, DE_RBRC, DE_RPRN,
 		                     KC_TRNS,    KC_TRNS,    KC_TRNS,       KC_LALT, OSM(MOD_LGUI), U_NP
     ),
@@ -100,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	// _L3 NUM
 	[_L3] = LAYOUT_split_3x5_3(
-		TG(_QWERTZ),    KC_TRNS,       EH_RGHT,       EH_LEFT,       QK_BOOT,              DE_SLSH, KC_7,   KC_8,    KC_9,  DE_PLUS,
+		TG(_HL),       KC_TRNS,       EH_RGHT,       EH_LEFT,       QK_BOOT,              DE_SLSH, KC_7,   KC_8,    KC_9,  DE_PLUS,
 		OSM(MOD_LALT), OSM(MOD_LSFT), OSM(MOD_LCTL), KC_TRNS,       EEP_RST,              DE_ASTR, KC_4,   KC_5,    KC_6,  DE_MINS,
 		OSM(MOD_LSFT), KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,              KC_BSPC, KC_1,   KC_2,    KC_3,  KC_RSFT,
                                       OSM(MOD_LGUI), OSM(MOD_LCTL), KC_TRNS,              KC_0,    KC_DOT, U_NP
@@ -109,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // _L4 NUM SYMS
 	[_L4] = LAYOUT_split_3x5_3(
 		KC_TRNS,       KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,              KC_NO,      LSFT(KC_7),  LSFT(KC_8),  LSFT(KC_9), KC_NO,
-		OSM(MOD_LALT), KC_TRNS,  OSM(MOD_LCTL), MO(_L5),        KC_TRNS,              KC_NO,      LSFT(KC_4),  LSFT(KC_5),  LSFT(KC_6), KC_NO,
+		OSM(MOD_LALT), KC_TRNS,  OSM(MOD_LCTL), MO(_L5),       KC_TRNS,              KC_NO,      LSFT(KC_4),  LSFT(KC_5),  LSFT(KC_6), KC_NO,
 		OSM(MOD_LSFT), KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,              KC_BSPC,    LSFT(KC_1),  LSFT(KC_2),  LSFT(KC_3), KC_NO,
 		                         OSM(MOD_LGUI), OSM(MOD_LCTL), KC_TRNS,              LSFT(KC_0), KC_DOT, U_NP
     ),
@@ -127,7 +116,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_ACCEL,         KC_NO, KC_NO,   DPI_RMOD,  DPI_MOD, KC_NO,
 		OSM(MOD_LALT), OSM(MOD_LSFT), KC_BTN1,       KC_BTN2,       KC_TRNS,          KC_NO, KC_BTN1, KC_BTN3,   KC_BTN2, KC_NO,
 		OSM(MOD_LSFT), KC_TRNS,       SNIPING,       DRGSCRL,       KC_TRNS,          KC_NO, DRGSCRL, KC_NO,     KC_NO,   KC_NO,
-                                        TD(TD_L_MODS), OSM(MOD_LCTL), MO(_L1),           KC_NO, KC_NO, U_NP
+                                      OSM(MOD_LSFT), OSM(MOD_LCTL), MO(_L1),          KC_NO, KC_NO, U_NP
     )
 
 };
@@ -184,32 +173,32 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
-LEADER_EXTERNS();
+//LEADER_EXTERNS();
 
-void matrix_scan_user(void) {
-  LEADER_DICTIONARY() {
-    leading = false;
-    leader_end();
+// void matrix_scan_user(void) {
+//   LEADER_DICTIONARY() {
+//     leading = false;
+//     leader_end();
 
-    SEQ_ONE_KEY(KC_S) {
-      tap_code16(DE_SS);
-    }
+//     SEQ_ONE_KEY(KC_S) {
+//       tap_code16(DE_SS);
+//     }
 
-    SEQ_ONE_KEY(KC_Q) {
-      tap_code16(S(DE_SS));
-    }
+//     SEQ_ONE_KEY(KC_Q) {
+//       tap_code16(S(DE_SS));
+//     }
 
-    SEQ_ONE_KEY(KC_E) {
-      tap_code16(DE_EURO);
-    }
+//     SEQ_ONE_KEY(KC_E) {
+//       tap_code16(DE_EURO);
+//     }
 
-    SEQ_ONE_KEY(KC_P) {
-      tap_code16(C(S(A(KC_Q))));
-    }
+//     SEQ_ONE_KEY(KC_P) {
+//       tap_code16(C(S(A(KC_Q))));
+//     }
 
-    SEQ_ONE_KEY(KC_N) {
-      SEND_STRING(SECRET_JENKINS);
-      tap_code(KC_ENTER);
-    }
-  }
-}
+//     SEQ_ONE_KEY(KC_N) {
+//       SEND_STRING(SECRET_JENKINS);
+//       tap_code(KC_ENTER);
+//     }
+//   }
+// }
