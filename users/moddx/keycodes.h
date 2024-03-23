@@ -4,9 +4,9 @@
 
 enum custom_keycodes {
     #if defined(KEYBOARD_bastardkb_charybdis_3x5_v2_elitec)
-    START_RANGE = CHARYBDIS_SAFE_RANGE,
+    START_RANGE = QK_USER,
     #else
-    START_RANGE = SAFE_RANGE,
+    START_RANGE = QK_USER,
     DPI_MOD,
     DPI_RMOD,
     DRGSCRL,
