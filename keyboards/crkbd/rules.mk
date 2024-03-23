@@ -28,4 +28,4 @@ DEFAULT_FOLDER = crkbd/rev1
 RGBLIGHT_SUPPORTED = no
 RGB_MATRIX_SUPPORTED = no
 
-LAYOUTS = split_3x5_3 split_3x6_3
+#LAYOUTS = split_3x5_3 split_3x6_3

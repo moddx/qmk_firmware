@@ -18,45 +18,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-#include "config_common.h"
-
-/* key matrix size */
-// Rows are doubled-up
-#define MATRIX_ROWS  8
-#define MATRIX_COLS  6
-// #define MATRIX_ROW_PINS \
-//     { GP4, GP5, GP6, GP7 }
-
-// // wiring of each half
-// #define MATRIX_COL_PINS \
-//    { GP29, GP28, GP27, GP26, GP18, GP20 }    // Adafruit KB2040
-//     //{ GP29, GP28, GP27, GP26, GP22, GP20 } // Sparkfun RP2040
-
-/* define if matrix has ghost */
-//#define MATRIX_HAS_GHOST
-
-/* number of backlight levels */
-// #define BACKLIGHT_LEVELS 3
-
 /* Set 0 if debouncing isn't needed */
 #define DEBOUNCE 5
-
-/* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
-//#define LOCKING_SUPPORT_ENABLE
-/* Locking resynchronize hack */
-//#define LOCKING_RESYNC_ENABLE
-
-
-/* disable debug print */
-// #define NO_DEBUG
-
-/* disable print */
-// #define NO_PRINT
-
-/* disable action features */
-//#define NO_ACTION_LAYER
-//#define NO_ACTION_TAPPING
-//#define NO_ACTION_ONESHOT
 
 /* Handedness. */
 #define MASTER_LEFT
