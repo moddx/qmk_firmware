@@ -45,9 +45,12 @@ CAPS_WORD_ENABLE = no
 LEADER_ENABLE = yes
 COMBO_ENABLE = yes
 
+
+INTROSPECTION_KEYMAP_C = users/moddx/combos.c
+
 KEYMAP_C = users/moddx/moddx.c
 #SRC += users/moddx/tapdances.c
-SRC += users/moddx/combos.c
+#SRC += users/moddx/combos.c
 SRC += users/moddx/pointing/pointing.c
 SRC += users/moddx/os_toggle.c
 SRC += users/moddx/window_swapper.c
