@@ -3,7 +3,7 @@
 #include QMK_KEYBOARD_H
 
 enum custom_keycodes {
-    #if defined(KEYBOARD_bastardkb_charybdis_3x5_v2_elitec)
+    #if defined(KEYBOARD_bastardkb_charybdis_3x5_v2_elitec) || (KEYBOARD_bastardkb_dilemma_3x5_3)
     START_RANGE = QK_USER,
     #else
     START_RANGE = QK_USER,

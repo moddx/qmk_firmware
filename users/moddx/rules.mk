@@ -6,7 +6,7 @@ ifdef rp2040
 	#PICO_INTRINSICS_ENABLED = no # ATM Unsupported by ChibiOS
 	SERIAL_DRIVER = vendor
 	WS2812_DRIVER = vendor
-	POINTING_DEVICE_ENABLE = no
+#	POINTING_DEVICE_ENABLE = no
 	DEFAULT_FOLDER = crkbd/rev1
 	NKRO_ENABLE = yes
 endif
@@ -14,9 +14,11 @@ endif
 ifdef cnano
 	EXTRAFLAGS += -flto
 	LTO_ENABLE = yes
-	POINTING_DEVICE_ENABLE = yes
+#	POINTING_DEVICE_ENABLE = yes
 	NKRO_ENABLE = no
 endif
+
+
 
 # Build Options
 BOOTMAGIC_ENABLE = no       # Enable Bootmagic Lite
@@ -24,18 +26,20 @@ MOUSEKEY_ENABLE = no        # Mouse keys
 EXTRAKEY_ENABLE = yes       # Audio control and System control
 CONSOLE_ENABLE = no         # Console for debug
 COMMAND_ENABLE = no         # Commands for debug and configuration
-# Do not enable SLEEP_LED_ENABLE. it uses the same timer as BACKLIGHT_ENABLE
-SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
-
 
 AUDIO_ENABLE = no           # Audio output
-BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
-RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
-RGBLIGHT_SUPPORTED = no     # RGB underglow is supported, but not enabled by default
-RGB_MATRIX_ENABLE = no      # Enable keyboard RGB matrix functionality
-RGB_MATRIX_SUPPORTED = no   # RGB matrix is supported and enabled by default
 
-SPLIT_KEYBOARD = yes
+# Do not enable SLEEP_LED_ENABLE. it uses the same timer as BACKLIGHT_ENABLE
+#SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
+#BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
+#RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
+#RGBLIGHT_SUPPORTED = no     # RGB underglow is supported, but not enabled by default
+#RGB_MATRIX_ENABLE = no      # Enable keyboard RGB matrix functionality
+#RGB_MATRIX_SUPPORTED = no   # RGB matrix is supported and enabled by default
+
+#SPLIT_KEYBOARD = yes
+
+# todo mses maybe unify on LAYOUT_split_3x5_3
 LAYOUTS = split_3x5_3
 
 # moddx

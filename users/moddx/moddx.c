@@ -54,6 +54,10 @@ const key_override_t *key_overrides[] = {
     NULL // Null terminate the array of overrides!
 };
 
+#if defined (KEYBOARD_bastardkb_dilemma_3x5_3)
+#define LAYOUT LAYOUT_split_3x5_3
+#endif
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     // Default, L0
@@ -61,14 +65,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_X,         KC_V,          KC_L,          KC_C,          KC_W,           KC_K,   KC_H,   KC_G,    KC_F,    KC_Q,
 		LALT_T(KC_U), LT(_L4, KC_I), LT(_L5, KC_A), LT(_L3, KC_E), KC_O,           KC_S,   KC_N,   KC_R,    KC_T,    KC_D,
 		LSFT_T(DE_Y), MO(_MOUSE),    QK_LEAD,       KC_P,          DE_Z,           KC_B,   KC_M,   KC_COMM, KC_DOT,  RSFT_T(KC_J),
-		                             KC_LSFT,       KC_LCTL,       MO(_L1),        KC_SPC, MO(_L2)
+		                             KC_LSFT,       KC_LCTL,       MO(_L1),        KC_SPC, MO(_L2), KC_MUTE
     ),
 
     [_HL] = LAYOUT(
 		KC_TAB,  KC_Q, KC_W, KC_E, KC_R,           KC_Z,   KC_U,   KC_I,    KC_O,    KC_P,
 		KC_LSFT, KC_A, KC_S, KC_D, KC_F,           KC_H,   KC_J,   KC_K,    KC_L,    QK_LEAD,
 		KC_LCTL, DE_Y, DE_5, KC_4, KC_3,           KC_N,   KC_M,   KC_COMM, KC_DOT,  RSFT_T(DE_MINS),
-		               KC_2, KC_1, KC_SPC,         KC_ESC, TG(_HL)
+		               KC_2, KC_1, KC_SPC,         KC_ESC, TG(_HL), KC_TRNS
     ),
 
     // _L1
@@ -76,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,  KC_ESC,     KC_ENT,     LCTL(DE_Z), KC_INS,        DM_REC1, DE_HASH,       DE_LCBR, DE_RCBR, KC_MPLY,
 		KC_LCTL, KC_SPC,     LCTL(KC_S), KC_HOME,    KC_END,        KC_LEFT, KC_DOWN,       KC_UP,   KC_RGHT, DE_LPRN,
 		KC_LSFT, LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), OSM(MOD_LSFT), KC_DEL,  KC_BSPC,       DE_LBRC, DE_RBRC, DE_RPRN,
-		                     KC_TRNS,    KC_TRNS,    KC_TRNS,       KC_LALT, OSM(MOD_LGUI)
+		                     KC_TRNS,    KC_TRNS,    KC_TRNS,       KC_LALT, OSM(MOD_LGUI), KC_TRNS
     ),
 
 	// _L2
@@ -84,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		EMAIL,          DE_BSLS,     DE_EQL,  DE_AMPR, DE_TILD,       DM_PLY1, LSFT(KC_F3), DE_ASTR, KC_F3,   DE_PLUS,
 		LCTL_T(DE_AT),  DE_LABK,     DE_RABK, DE_MINS, DE_PIPE,       MC_SWLE, KC_PGDN,     KC_PGUP, MC_SWRI, KC_TRNS,
 		LSFT_T(KC_APP), LALT(KC_F4), KC_NO,   KC_NO,   KC_NO,         DE_SS,   DE_UDIA,     DE_ODIA, DE_ADIA, KC_RSFT,
-		                             KC_TRNS, KC_CAPS, KC_TRNS,       KC_TRNS, KC_TRNS
+		                             KC_TRNS, KC_CAPS, KC_TRNS,       KC_TRNS, KC_TRNS, KC_TRNS
     ),
 
 	// _L3 NUM
@@ -92,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		TG(_HL),       KC_TRNS,       EH_RGHT,       EH_LEFT,       QK_BOOT,              DE_SLSH, KC_7,   KC_8,    KC_9,  DE_PLUS,
 		OSM(MOD_LALT), OSM(MOD_LSFT), OSM(MOD_LCTL), KC_TRNS,       EE_CLR,              DE_ASTR, KC_4,   KC_5,    KC_6,  DE_MINS,
 		OSM(MOD_LSFT), KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,              KC_BSPC, KC_1,   KC_2,    KC_3,  KC_RSFT,
-                                      OSM(MOD_LGUI), OSM(MOD_LCTL), KC_TRNS,              KC_0,    KC_DOT
+                                      OSM(MOD_LGUI), OSM(MOD_LCTL), KC_TRNS,              KC_0,    KC_DOT, KC_TRNS
     ),
 
     // _L4 NUM SYMS
@@ -100,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_TRNS,       KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,              KC_NO,      LSFT(KC_7),  LSFT(KC_8),  LSFT(KC_9), KC_NO,
 		OSM(MOD_LALT), KC_TRNS,  OSM(MOD_LCTL), MO(_L5),       KC_TRNS,              KC_NO,      LSFT(KC_4),  LSFT(KC_5),  LSFT(KC_6), KC_NO,
 		OSM(MOD_LSFT), KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,              KC_BSPC,    LSFT(KC_1),  LSFT(KC_2),  LSFT(KC_3), KC_NO,
-		                         OSM(MOD_LGUI), OSM(MOD_LCTL), KC_TRNS,              LSFT(KC_0), KC_DOT
+		                         OSM(MOD_LGUI), OSM(MOD_LCTL), KC_TRNS,              LSFT(KC_0), KC_DOT, KC_TRNS
     ),
 
 	// _L5 F-Keys
@@ -108,15 +112,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,          KC_TRNS, KC_F7,   KC_F8,   KC_F9,   KC_F10,
 		OSM(MOD_LALT), OSM(MOD_LSFT), KC_TRNS,       KC_TRNS,       KC_TRNS,          KC_TRNS, KC_F4,   KC_F5,   KC_F6,   KC_F11,
 		OSM(MOD_LSFT), KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,          KC_TRNS, KC_F1,   KC_F2,   KC_F3,   KC_F12,
-		                              OSM(MOD_LGUI), OSM(MOD_LCTL), KC_TRNS,          KC_TRNS, KC_TRNS
+		                              OSM(MOD_LGUI), OSM(MOD_LCTL), KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS
     ),
 
     // _MOUSE
 	[_MOUSE] = LAYOUT(
 		KC_NO,         KC_NO,         KC_NO,         KC_NO,         KC_ACCEL,         KC_NO,   KC_NO,   DPI_RMOD,  DPI_MOD, KC_NO,
-		KC_LALT,       KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_NO,            KC_NO,   KC_BTN1, KC_BTN3,   KC_BTN2, KC_NO,
+		KC_LALT,       KC_BTN2,       KC_BTN3,       KC_BTN1,       KC_NO,            KC_NO,   KC_BTN1, KC_BTN3,   KC_BTN2, KC_NO,
 		KC_LSFT,       KC_TRNS,       SNIPING,       DRGSCRL,       KC_NO,            KC_NO,   DRGSCRL, KC_NO,     KC_NO,   KC_NO,
-                                      KC_LSFT,       KC_LCTL,       MO(_L1),          KC_LALT, KC_TRNS
+                                      KC_LSFT,       KC_LCTL,       MO(_L1),          KC_LALT, KC_TRNS, KC_TRNS
     )
 
 };
