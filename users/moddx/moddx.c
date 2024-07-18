@@ -38,7 +38,7 @@ const key_override_t deg_override = ko_make_with_layers(MOD_MASK_ALT, LSFT(KC_9)
 // backslash
 const key_override_t sls_bsls_override = ko_make_with_layers(MOD_MASK_SHIFT, LSFT(KC_7), DE_BSLS, (1 << _L4));
 
-const key_override_t **key_overrides = (const key_override_t *[]){
+const key_override_t *key_overrides[] = {
     &ctrl_dot_override,
     &shift_dot_override,
     &play_next_override,
