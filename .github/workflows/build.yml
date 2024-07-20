@@ -7,7 +7,6 @@ on:
 
 jobs:
   build:
-    environment: testenv
     runs-on: ubuntu-latest
     container: qmkfm/qmk_cli
     name: Build
