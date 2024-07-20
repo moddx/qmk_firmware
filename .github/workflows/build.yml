@@ -27,6 +27,8 @@ jobs:
         run: qmk compile -kb crkbd/rev1 -km moddx -e rp2040=1 --clean
       - name: Build firmware (cnano)
         run: qmk compile -kb bastardkb/charybdis/3x5/v2/elitec -km moddx -e cnano=1 --clean
+      - name: Build firmware (dilemma)
+        run: qmk compile -kb bastardkb/dilemma/3x5_3 -km moddx --clean
       #- name: Build firmware (signum)
       #  run: qmk compile handwired/signum2:default
       - name: Archive
