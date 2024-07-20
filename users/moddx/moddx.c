@@ -54,9 +54,9 @@ const key_override_t *key_overrides[] = {
     NULL // Null terminate the array of overrides!
 };
 
-#if defined (KEYBOARD_bastardkb_dilemma_3x5_3)
-#define LAYOUT LAYOUT_split_3x5_3
-#endif
+// #if defined (KEYBOARD_bastardkb_dilemma_3x5_3)
+// #define LAYOUT LAYOUT_split_3x5_3
+// #endif
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 

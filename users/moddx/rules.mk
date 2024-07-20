@@ -37,9 +37,6 @@ AUDIO_ENABLE = no           # Audio output
 #RGB_MATRIX_ENABLE = no      # Enable keyboard RGB matrix functionality
 #RGB_MATRIX_SUPPORTED = no   # RGB matrix is supported and enabled by default
 
-#SPLIT_KEYBOARD = yes
-
-# todo mses maybe unify on LAYOUT_split_3x5_3
 LAYOUTS = split_3x5_3
 
 # moddx
