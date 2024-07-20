@@ -6,11 +6,13 @@ on:
     - qmk-develop-matt
 
 jobs:
-  build:
+  prepare:
     runs-on: ubuntu-latest
     container: ghcr.io/qmk/qmk_cli
     name: Build
     steps:
+      - name: Disable safe.directory check
+        run: git config --global --add safe.directory '*'
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -22,6 +24,8 @@ jobs:
         run: echo "${HEADER_CONTENT}" > users/moddx/secrets.h
       - name: Install python dependencies
         run: pip3 install -r requirements.txt
+      - name: Populate submodules
+        run: qmk git-submodule -f
       - name: Build firmware (crkbd)
         run: qmk compile -kb crkbd/rev1 -km moddx -e rp2040=1 --clean
       - name: Build firmware (cnano)
