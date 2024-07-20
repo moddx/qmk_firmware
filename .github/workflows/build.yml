@@ -6,7 +6,8 @@ on:
     - qmk-develop-matt
 
 jobs:
-  prepare:
+  build:
+    environment: testenv
     runs-on: ubuntu-latest
     container: ghcr.io/qmk/qmk_cli
     name: Build
