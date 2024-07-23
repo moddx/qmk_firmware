@@ -117,8 +117,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     // _MOUSE
 	[_MOUSE] = LAYOUT(
-		KC_NO,         KC_NO,         KC_NO,         KC_NO,         KC_ACCEL,         KC_NO,   KC_NO,   DPI_RMOD,  DPI_MOD, KC_NO,
-		KC_LALT,       KC_BTN2,       KC_BTN3,       KC_BTN1,       KC_NO,            KC_NO,   KC_BTN1, KC_BTN3,   KC_BTN2, KC_NO,
+        KC_NO,         KC_BTN2,       KC_BTN3,       KC_BTN1,       KC_ACCEL,         KC_NO,   KC_NO,   DPI_RMOD,  DPI_MOD, KC_NO,
+		KC_LALT,       LT(_L4, KC_I), LT(_L5, KC_A), LT(_L3, KC_E), KC_NO,            KC_NO,   KC_BTN1, KC_BTN3,   KC_BTN2, KC_NO,
 		KC_LSFT,       KC_TRNS,       SNIPING,       DRGSCRL,       KC_NO,            KC_NO,   DRGSCRL, KC_NO,     KC_NO,   KC_NO,
                                       KC_LSFT,       KC_LCTL,       MO(_L1),          KC_LALT, KC_TRNS, KC_TRNS
     )
